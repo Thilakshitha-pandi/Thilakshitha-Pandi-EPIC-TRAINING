@@ -1,0 +1,30 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String str = in.nextLine();
+        String str2 = in.nextLine();
+        int n = 0;
+        while(n < str.length() && n < str2.length()){
+            if (str.charAt(n) > str2.charAt(n)){
+                System.out.println("String 1 Greater");
+                return;
+            }
+            if(str.charAt(n) < str2.charAt(n)){
+                System.out.println("String 1 Smaller");
+                return;
+            }
+            n++;
+        }
+        if (str.length() > str2.length()){
+            System.out.println("String 1 Greater");
+        }
+        else if (str.length() < str2.length()){
+            System.out.println("String 1 Smaller");
+        }
+        else{
+            System.out.println("Equal");
+        }
+        
+    }
+}
