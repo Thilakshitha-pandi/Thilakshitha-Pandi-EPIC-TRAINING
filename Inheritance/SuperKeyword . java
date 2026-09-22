@@ -1,0 +1,23 @@
+
+class Employee{
+    String name;
+    Employee(String name){
+        this.name = name ; 
+        
+    }
+}
+class Payment extends Employee{
+    int sal ;
+    Payment(String name, int sal){
+        super(name);
+        this.sal = sal;
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+	    Payment ptm = new Payment("Dhareneesh",45000);
+		System.out.println(ptm.name);
+		System.out.println(ptm.sal);
+	}
+}
