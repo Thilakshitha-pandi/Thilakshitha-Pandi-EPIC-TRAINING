@@ -187,6 +187,40 @@ class NetBankingPayment extends Payment{
     double transactionfee(){
         return Amount*0.01;
     }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		CreditCardPayment c = new CreditCardPayment("Thilakshitha",7337,73000,"1234567890737373");
+		UPIPayment u = new UPIPayment ("Akshaya",3773,37000,"aksh@34");
+		NetBankingPayment n = new NetBankingPayment("Amildhini",7373,33700,"987654321077");
+		
+		if (c.Validatepayment() == true){
+		    c.displayPaymentDetails();
+		    c.Processpayment();
+		    System.out.println("Transactionfee: "+ c.transactionfee());
+		    System.out.println("Cashback: "+ c.cashback());
+		    System.out.println("Finalamount: "+ c.finalamount());
+		}
+		System.out.println();
+		if (u.Validatepayment() == true){
+		    u.displayPaymentDetails();
+		    u.Processpayment();
+		    System.out.println("Transactionfee: "+ u.transactionfee());
+		    System.out.println("Cashback: "+ u.cashback());
+		    System.out.println("Finalamount: "+ u.finalamount());
+		}
+		System.out.println();
+		if (n.Validatepayment() == true){
+		    n.displayPaymentDetails();
+		    n.Processpayment();
+		    System.out.println("Transactionfee: "+ n.transactionfee());
+		    System.out.println("Cashback: "+ n.cashback());
+		    System.out.println("Finalamount: "+ n.finalamount());
+		}
+	}
+}
+
     
     double cashback(){
         return Amount*0.01;
