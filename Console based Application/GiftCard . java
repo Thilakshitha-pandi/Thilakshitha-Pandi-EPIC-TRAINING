@@ -1,0 +1,119 @@
+import java.util.Scanner;
+class Customer{
+    int cusId;
+    String cusName;
+    double cusAccountBalance;
+    Customer[] cusArr = new Customer[100];
+    int index = 0;
+    
+    Customer(){
+        
+    }
+    Customer(int id,String n,String p ,int a){
+        this.cusId = id;
+        this.cusName = n;//current class refer
+        this.cusAccountBalance = a;
+    }
+      
+    void createCustomer(){
+        Scanner in = new Scanner(System.in);
+        int id = index + 1;
+        System.out.println("Enter the Cus name:");
+        String name = in.nextLine();
+        System.out.println("Enter the Cus Accbal:");
+        double accbal = in.nextInt();
+        Customer cus = new Customer(id,name,accbal);
+        cusArr[index] = cus ;
+        index++;
+        System.out.println("Customer Created Successfully");
+        
+    }
+    
+    void displayCustomer() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Customer ID:");
+        int id = in.nextInt();
+        boolean found = false;
+         if (id >= 0 && id < index){
+            if (proArr[id].proId == id) {
+                System.out.println("Customer ID: "cusArr[id].cusId);
+                System.out.println("Name: " + cusArr[id].cusName);
+                System.out.println("Account Balance: " + cusArr[id].cusAccountBalance);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Customer not Found");
+        }
+    }
+    
+    void Addmoney(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Customer ID:");
+        int id = in.nextInt();
+        boolean found = false;
+        for (int i = 0; i < index; i++) {
+            if (cusArr[i].cusId == id) {
+                found = true;
+                
+    }
+}
+
+class GiftCard{
+    
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Customer cus = new Customer();
+        Product pro = new Product();
+        Bill bill = new Bill(pro);
+        while (true) {
+            System.out.println("1)Create Customer \n2)Gift Card Creation \n3)Gift Card Top-Up \n4)Purchase \n5)Reward Points and Levels  \n6)Close Gift Card  \n7)Block Gift Card  \n8)Unblock Gift Card  \n9)Unblock Gift Card \n10)Display Information");
+            int n = in.nextInt();
+            switch (n) {
+                case 1: {
+                    cus.createCustomer();
+                    break;
+                }
+                case 2: {
+                    cus.displayCustomer();
+                    break;
+                }
+                case 3: {
+                    cus.GetCusbyID();
+                    break;
+                }
+                case 4: {
+                    pro.createProduct();
+                    break;
+                }
+                case 5: {
+                    pro.displayProduct();
+                    break;
+                }
+                case 6: {
+                    pro.GetProbyID();
+                    break;
+                }
+
+                case 7: {
+                    bill.createBill();
+                    break;
+                }
+                case 8: {
+                    bill.displayBill();
+                    break;
+                }
+                case 9: {
+                    bill.GetBillbyID();
+                    break;
+                }
+                default: {
+                    System.out.println("Invalid");
+                }
+            }
+        }
+    }
+}
