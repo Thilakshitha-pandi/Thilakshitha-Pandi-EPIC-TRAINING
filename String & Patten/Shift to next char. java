@@ -22,3 +22,25 @@ public class Main
 		System.out.println(Main.charString(str));
 	}
 }
+
+
+                                                                                          OR
+
+import java.util.Scanner;
+public class Main
+{
+    static String charString(String str){
+       String result = "";
+       for (int i = 0; i < str.length(); i++){
+           char ch = str.charAt(i);
+            ch = (char) ((ch - 'a' + 1) % 26 + 'a');
+            result = result + ch ;
+        }
+        return result;
+    }
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String str = in.nextLine();
+		System.out.println(Main.charString(str));
+	}
+}
