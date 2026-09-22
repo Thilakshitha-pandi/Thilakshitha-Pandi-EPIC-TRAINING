@@ -1,0 +1,278 @@
+import java.util.Scanner;
+class Customer{
+    String cusName;
+    String cusPhNo;
+    int cusAge;
+    Customer[] cusArr = new Customer[100];
+    int index = 0;
+    
+    Customer(){
+        
+    }
+    Customer(String n,String p ,int a){
+        this.cusName = n;
+        this.cusPhNo = p; //current class refer
+        this.cusAge = a;
+    }
+        
+    void createCustomer(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the Cus name:");
+        String name = in.nextLine();
+        System.out.println("Enter the Cus phno:");
+        String phno = in.nextLine();
+        System.out.println("Enter the Cus age:");
+        int age = in.nextInt();
+        Customer cus = new Customer(name,phno,age);
+        cusArr[index] = cus ;
+        index++;
+        System.out.println("Customer Created Successfully");
+        
+    }
+    
+    void displayCustomer(){
+        for (int i = 0; i < index ;i++){
+            System.out.println("Customer ID: " + i);
+            System.out.println("Name: "+cusArr[i].cusName);
+            System.out.println("Ph no: "+cusArr[i].cusPhNo);
+            System.out.println("Age: "+cusArr[i].cusAge);
+        }
+    }
+    
+    void GetCusbyID(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Product ID :");
+        int id = in.nextInt();
+        if (id >= 0 && id < index){
+            System.out.println("Name: "+ cusArr[id].cusName);
+            System.out.println("Ph No: "+ cusArr[id].cusPhNo);
+            System.out.println("Age: "+ cusArr[id].cusAge);
+        }else{
+            System.out.println("Customer not Found");
+        }
+    }
+}
+
+class Product{
+    String proName;
+    String proBrand;
+    int proPrice;
+    Product[] proArr = new Product[100];
+    int index = 0;
+    
+    Product(){
+        
+    }
+    Product(String n,String b ,int p){
+        this.proName = n;
+        this.proBrand = b;
+        this.proPrice = p;
+    }
+        
+    void createProduct(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the  Pro name:");
+        String name = in.nextLine();
+        System.out.println("Enter the Pro brand:");
+        String brand = in.nextLine();
+        System.out.println("Enter the Pro price:");
+        int price = in.nextInt();
+        Product pro = new Product(name,brand,price);
+        proArr[index] = pro ;
+        index++;
+        System.out.println("Product Created Successfully");
+        
+    }
+    
+    void displayProduct(){
+        for (int i = 0; i < index ;i++){
+            System.out.println("Product ID: " + i);
+            System.out.println("Name: "+proArr[i].proName);
+            System.out.println("Brand: "+proArr[i].proBrand);
+            System.out.println("Price: "+proArr[i].proPrice);
+        }
+    }
+    
+   void GetProbyID(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Product ID :");
+        int id = in.nextInt();
+        if(id >= 0 && id < index){
+            System.out.println("Name: "+ proArr[id].proName);
+            System.out.println("Brand: "+ proArr[id].proBrand);
+            System.out.println("Price: "+ proArr[id].proPrice);
+        }else{
+            System.out.println("Product not Found");
+        }
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner in = new Scanner(System.in);
+	    Customer cus = new Customer();
+	    Product pro = new Product();
+		while(true){
+		    System.out.println("1)Create Customer \n 2)Display Customer \n3)Get Customer by ID \n4)Create Product \n5)Display Product \n6)Get Product by ID");
+		    int n = in.nextInt();
+		    switch(n){
+		        case 1:{
+		            cus.createCustomer();
+		            break;
+		        }
+		        case 2:{
+		            cus.displayCustomer();
+		            break;
+		        }
+		        case 3:{
+		            cus.GetCusbyID();
+		            break;
+		        }
+		        case 4:{
+		            pro.createProduct();
+		            break;
+		        }case 5:{
+		            pro.displayProduct();
+		            break;
+		        }
+		        case 6:{
+		            pro.GetProbyID();
+		            break;
+		        }default{
+		            System.out.println("invalid");
+		        }
+		    }
+		}
+	}
+}
+
+class Bill{
+    Customer cus;
+    Product pro;
+    
+    int CustomerID ;
+    int ProductId ;
+    int quantity ;
+    int total ;
+    Bill[] billArr = new Bill[100];
+    int index = 0;
+    
+    Bill(){
+        
+    }
+    int index = 0;
+
+    Bill(Customer c, Product p) {
+        this.cus = c;
+        this.pro = p; 
+    }
+    
+    Bill(int cId, int pId, int qty, int total) {
+        this.customerId = cId;
+        this.productId = pId;
+        this.quantity = qty;
+        this.total = total;
+    }
+        
+    void BuyProduct(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Customer ID:");
+        int cId = in.nextInt();
+        if (cId < 0 || cId >= cus.index) {
+            System.out.println("Customer Not Found");
+            return;
+        }
+        System.out.println("Customer Name: " + cus.cusArr[cId].cusName);
+        int c = 1;
+        int GrandTotal = 0;
+        whila(c == 1){
+            System.out.println("Enter Product ID:");
+            int pId = in.nextInt();
+            if (pId < 0 || pId >= pro.index) {
+               System.out.println("Product Not Found");
+               continue;
+            }
+            System.out.println("Product Name: " + pro.proArr[pId].proName);
+            System.out.println("Price: " + pro.proArr[pId].proPrice);
+            System.out.println("Enter Quantity: ");
+            int qut = in.nextInt;
+            int amount = pro.proArr[pId].proPrice*qut;
+            Bill b = new Bill(cId,pId,qut,amount);
+            billArr[index] = b;
+            index++;
+            GrandTotal = GrandTotal + total;
+            System.out.println("Product total : "+amount);
+            System.out.println("What to continue \n1)yes \n2)no");
+            c = in.nextInt();
+        }
+        System.out.println("Customer: "+cus.cusArr[cId].cusName);
+        System.out.println("GrandTotal: "+GrandTotal);
+    }
+    
+    void displayBill(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Customer ID:");
+        int cId = in.nextInt();
+        if (cId < 0 || cId >= cus.index) {
+            System.out.println("Customer Not Found");
+            return;
+        }
+        System.out.println("Customer ID: " + cId);
+        System.out.println("Customer Name: " + cus.cusArr[cId].cusName);
+        int grandTotal = 0;
+        boolean found = false;
+        for (int i = 0 ; i < index ; i++){
+            if (billArr[i].customerId == cId){
+                found = true;
+                int pID = billArr[i].productId;
+                System.out.println("Product Id: "+pID);
+                System.out.println("Product Name: "+pro.proArr[pID].proName);
+                System.out.println("Product Price: "+pro.proArr[pID].proPrice);
+                System.out.println("Product Brand: "+pro.proArr[pID].proBrand);
+                System.out.println("Quantity: "+billArr[i].quantity);
+                System.out.println("Total: "+billArr[i].total);
+                grandTotal = grandTotal+billArr[i].total;
+            }
+            if(found){
+                System.out.println("GrandTotal: "+billArr[i].grandTotal);
+            }else{
+                System.out.println("No Bill History");
+            }
+        }
+    }
+    
+   void GetBillbyID(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Bill ID :");
+        int id = in.nextInt();
+        System.out.println("Enter Customer ID:");
+        int cId = in.nextInt();
+        if (cId < 0 || cId >= cus.index) {
+            System.out.println("Customer Not Found");
+            return;
+        }
+        System.out.println("Customer ID: " + cId);
+        System.out.println("Customer Name: " + cus.cusArr[cId].cusName);
+        int grandTotal = 0;
+        boolean found = false;
+        for (int i = 0 ; i < index ; i++){
+            if (billArr[i].customerId == cId){
+                found = true;
+                int pID = billArr[i].productId;
+                System.out.println("Bill ID:"+id);
+                System.out.println("Product Id: "+pID);
+                System.out.println("Product Name: "+pro.proArr[pID].proName);
+                System.out.println("Product Price: "+pro.proArr[pID].proPrice);
+                System.out.println("Product Brand: "+pro.proArr[pID].proBrand);
+                System.out.println("Quantity: "+billArr[i].quantity);
+                System.out.println("Total: "+billArr[i].total);
+                grandTotal = grandTotal+billArr[i].total;
+            }
+            if(found){
+                System.out.println("GrandTotal: "+billArr[i].grandTotal);
+            }else{
+                System.out.println("No Bill History");
+            }
+    }
+}
