@@ -1,0 +1,24 @@
+Shift to 
+Input abc => bcd
+
+import java.util.Scanner;
+public class Main
+{
+    static String charString(String str){
+       String result = "";
+       for (int i = 0; i < str.length(); i++){
+           char ch = str.charAt(i);
+           if (ch == 'z'){
+               result = result +'a';
+           }else{
+               result = result + (char)(ch + 1);
+           }
+        }
+        return result;
+    }
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String str = in.nextLine();
+		System.out.println(Main.charString(str));
+	}
+}
